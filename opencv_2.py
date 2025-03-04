@@ -11,11 +11,17 @@ frames = []
 while True:
     ret, frame = cap.read()
 
-    if not red:
+    if not ret:
         print('프레임 획득에 실패하여 루프를 나갑니다.')
         break
 
-    cv.imshow('Video display', frame)
+    edge = cv.Canny(frame,75,100)
+
+    edge = cv.cvtColor(edge, cv.COLOR_GRAY2BGR)
+
+    videos = np.hstack((frame, edge))
+
+    cv.imshow('Video display', videos)
 
     key = cv.waitKey(1)
     if key == ord('q'):
