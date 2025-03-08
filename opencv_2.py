@@ -24,7 +24,7 @@ while True:
     cv.imshow('Video display', videos)
 
     key = cv.waitKey(1)
-    if key == ord('q'):
+    if key == ord('q') or key == ord('Q'):
         break
 
 cap.release()
@@ -32,7 +32,7 @@ cap.release()
 while(True):
     
     # q 키를 누르고 종료
-    if cv.waitKey(1) == ord('q'):
+    if cv.waitKey(1) == ord('q') or key == ord('Q'):
         print('quit')
         cv.destroyAllWindows()
         break
