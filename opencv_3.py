@@ -30,13 +30,13 @@ cv.setMouseCallback('Drawing', draw)
 while(True):
     
     # q 키를 누르고 종료
-    if cv.waitKey(1) == ord('q'):
+    if cv.waitKey(1) == ord('q') or cv.waitKey(1) == ord('Q'):
         print('quit')
         cv.destroyAllWindows()
         break
 
     # r 키를 누르고 영역 선택을 리셋하고 처음부터 다시 선택
-    elif cv.waitKey(1) == ord('r'):
+    elif cv.waitKey(1) == ord('r') or cv.waitKey(1) == ord('R'):
         print('reset complete')
         cv.destroyAllWindows()
         img = cv.imread('soccer.jpg')
@@ -44,6 +44,6 @@ while(True):
         cv.setMouseCallback('Drawing', draw)
 
     # s 키를 누르고 선택한 영역을 이미지 파일로 저장
-    elif cv.waitKey(1) == ord('s'):
+    elif cv.waitKey(1) == ord('s') or cv.waitKey(1) == ord('S'):
         print('save complete')
         cv.imwrite('saved_image.jpg',image)
