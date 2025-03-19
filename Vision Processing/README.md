@@ -11,6 +11,12 @@ img = cv.imread('mistyroad.jpg')
 
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
+h = cv.calcHist([gray],[0],None,[256],[0,256])
+
+plt.imshow(gray, cmap='gray'), plt.xticks([]), plt.yticks([]), plt.show()
+
+plt.plot(h, color='r', linewidth=1), plt.show()
+
 t, bin_img = cv.threshold(img[:,:,2], 127, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 print('오쥬 알고리즘이 찾느 최적 임곗값=', t)
 
@@ -29,20 +35,30 @@ img = cv.imread('mistyroad.jpg')
 ```python
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 ```
-3. cv.thredshold를 통해서 임계값을 정하고, 그 임계값에 따라서 이미지를 이진화한다.
+3. 우선, 그레이스케일로 변환만 한 이미지를 출력하고, 그 것을 히스토그램으로 시각화한다.
+```python
+h = cv.calcHist([gray],[0],None,[256],[0,256])
+plt.imshow(gray, cmap='gray'), plt.xticks([]), plt.yticks([]), plt.show()
+plt.plot(h, color='r', linewidth=1), plt.show()
+```
+4. cv.thredshold를 통해서 임계값을 정하고, 그 임계값에 따라서 이미지를 이진화한다.
 ```python
 t, bin_img = cv.threshold(img[:,:,2], 127, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 ```
-4. calcHist를 통해서 히스토그램을 구하고 히스토그램을 시각화한다.
+5. calcHist를 통해서 히스토그램을 구하고 히스토그램을 시각화한다.
 ```python
 h = cv.calcHist([bin_img],[0],None,[256],[0,256])
 ```
-5. plt.imshow를 통해서 이미지를 출력하고, plt.plot을 통해서 히스토그램을 시각화한다.
+6. plt.imshow를 통해서 이미지를 출력하고, plt.plot을 통해서 히스토그램을 시각화한다.
 ```python
 plt.imshow(bin_img, cmap='gray'), plt.xticks([]), plt.yticks([]), plt.show()
 plt.plot(h, color='r', linewidth=1), plt.show()
 ```
 ### 결과
+#### 이진화 전
+![Image](https://github.com/user-attachments/assets/2e9968d0-9364-46f7-9ebb-00f44d9eae78)
+![Image](https://github.com/user-attachments/assets/ca98d07b-10d7-4c25-984f-5e74f4fd4155)
+#### 이진화 후
 ![Image](https://github.com/user-attachments/assets/dab6664f-bbf0-48e2-90c5-67906cce3648)
 ![Image](https://github.com/user-attachments/assets/82366f31-4856-464a-a490-25c82850a071)
 
