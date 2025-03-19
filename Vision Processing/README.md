@@ -14,10 +14,10 @@ gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 t, bin_img = cv.threshold(img[:,:,2], 127, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 print('오쥬 알고리즘이 찾느 최적 임곗값=', t)
 
-equal = cv.equalizeHist(bin_img)
-plt.imshow(equal, cmap='gray'), plt.xticks([]), plt.yticks([]), plt.show()
+h = cv.calcHist([bin_img],[0],None,[256],[0,256])
 
-h = cv.calcHist([equal],[0],None,[256],[0,256])
+plt.imshow(bin_img, cmap='gray'), plt.xticks([]), plt.yticks([]), plt.show()
+
 plt.plot(h, color='r', linewidth=1), plt.show()
 ```
 ### 원리
@@ -33,18 +33,18 @@ gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 ```python
 t, bin_img = cv.threshold(img[:,:,2], 127, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 ```
-4. cv.equalizeHist를 통해서 히스토그램을 평활화하고 이미지를 출력한다.
+4. calcHist를 통해서 히스토그램을 구하고 히스토그램을 시각화한다.
 ```python
-equal = cv.equalizeHist(bin_img)
+h = cv.calcHist([bin_img],[0],None,[256],[0,256])
 ```
-5. calcHist를 통해서 히스토그램을 구하고 히스토그램을 시각화한다.
+5. plt.imshow를 통해서 이미지를 출력하고, plt.plot을 통해서 히스토그램을 시각화한다.
 ```python
-h = cv.calcHist([equal],[0],None,[256],[0,256])
+plt.imshow(bin_img, cmap='gray'), plt.xticks([]), plt.yticks([]), plt.show()
+plt.plot(h, color='r', linewidth=1), plt.show()
 ```
 ### 결과
-
-![Image](https://github.com/user-attachments/assets/faafaef2-a1af-4d7d-bb82-b85bf88a5138)
-![Image](https://github.com/user-attachments/assets/3b355dac-e84d-451e-ac87-00d5f737bdcc)
+![Image](https://github.com/user-attachments/assets/dab6664f-bbf0-48e2-90c5-67906cce3648)
+![Image](https://github.com/user-attachments/assets/82366f31-4856-464a-a490-25c82850a071)
 
 
 ## 2번 문제
