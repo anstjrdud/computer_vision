@@ -2,14 +2,14 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv.imread('dabotop.jpg')
-img_result = cv.imread('dabotop.jpg')
+img = cv.imread('coffee cup.jpg')
+img_result = cv.imread('coffee cup.jpg')
 
 gray = cv.cvtColor(img_result, cv.COLOR_BGR2GRAY)
 
 canny1 = cv.Canny(gray,100,200)
 
-lines = cv.HoughLinesP(canny1,10,np.pi/180.,120,minLineLength=15,maxLineGap=5)
+lines = cv.HoughLinesP(canny1,10,np.pi/180.,120,minLineLength=7,maxLineGap=12)
 
 if lines is not None: # 라인 정보를 받았으면
     for i in range(lines.shape[0]):
