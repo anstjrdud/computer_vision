@@ -38,7 +38,7 @@ plt.show()
 ```python
 cv.SIFT_create(nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold, sigma)
 ```
-SIFT 객체를 생성하는 함수
+SIFT 객체를 생성하는 함수.
 * nfeatures: 검출 최대 특징 수
 * nOctaveLayers: 이미지 피라미드에 사용할 계층 수
 * contrastThreshold: 필터링할 빈약한 특징 임계값
@@ -48,7 +48,7 @@ SIFT 객체를 생성하는 함수
 ```python
 (SIFT 객체).detectAndCompute(image, mask, decriptors, useProvidedKeypoints)
 ```
-SIFT 객체를 통해 이미지의 특징점을 검출하는 함수
+SIFT 객체를 통해 이미지의 특징점을 검출하는 함수.
 * image: 입력 이미지
 * keypoints: 디스크립터 계산을 위해 사용할 특징점
 * descriptors(optional): 계산된 디스크립터
@@ -59,7 +59,7 @@ SIFT 객체를 통해 이미지의 특징점을 검출하는 함수
 ```python
 cv.drawKeypoints(img, keypoints, outImg, color, flags)
 ```
-검출한 특징점을 이미지에 시각화하는 함수
+검출한 특징점을 이미지에 시각화하는 함수.
 * img : 입력 이미지
 * keypoints : 표시할 특징점
 * outImg : 특징점이 그려질 결과 이미지
@@ -125,6 +125,7 @@ plt.show()
 ```python
 cv.FlannBasedMatcher(index_params, search_params)
 ```
+두 이미지 간 특징점을 매칭하는 알고리즘을 정하는 함수.
 * index_params : 사전 사료로 생성되며, 어떤 알고리즘을 통해서 특징점을 매칭할 것인지 정한다.
 * search_params : 특성 매칭을 위한 반복 횟수
   
@@ -132,6 +133,7 @@ cv.FlannBasedMatcher(index_params, search_params)
 ```python
 cv.(FlannBasedMatcher).knnMatch(queryDescriptors, trainDescriptors, k, mask=None, compactResult=None)
 ```
+특징점을 매칭할 기술자 행렬을 이용해서 최근접 이웃 거리 비율을 적용해서 매칭 정확도를 높이는 함수.
 * queryDescriptors: (기준 영상 특징점) 질의 기술자 행렬
 * trainDescriptors: (대상 영상 특징점) 학습 기술자 행렬
 * k: 질의 기술자에 대해 검출할 매칭 개수
@@ -143,6 +145,7 @@ cv.(FlannBasedMatcher).knnMatch(queryDescriptors, trainDescriptors, k, mask=None
 ```python
 cv.drawMatches(img1, keypoints1, img2, keypoints2, matches1to2, outImg, matchColor=None, singlePointColor=None, matchesMask=None, flags=None)
 ```
+두 이미지의 특징점을 비교해서 매칭된 특징점들을 찾고 마스크로 그리게 하는 함수.
 * img1, keypoints1: 기준 영상과 기준 영상에서 추출한 특징점 정보
 * img2, keypoints2: 대상 영상과 대상 영상에서 추출한 특징점 정보
 * matches1to2: 매칭 정보. cv2.DMatch의 리스트.
@@ -251,6 +254,37 @@ plt.axis('off')
 plt.show()
 ```
 ## 함수
-### 
+### cv.findHomography
+```python
+cv.findHomography(srcPoints, dstPoints, method=None, ransacReprojThreshold=None, mask=None, maxIters=None, confidence=None)
+```
+두 개의 이미지의 특징점 좌표들을 통해 호모그래피 행렬 계산을 하는 함수.
+* srcPoints: 1번 이미지 특징점 좌표. numpy.ndarray. shape=(N, 1, 2). dtype=numpy.float32.
+* dstPoints: 2번 이미지 특징점 좌표. numpy.ndarray. shape=(N, 1, 2). dtype=numpy.float32.
+* method: 호모그래피 행렬 계산 방법. 0, LMEDS, RANSAC, RHO 중 선택. 기본값은 0이며, 이상치가 있을 경우 RANSAC, RHO 방법 권장.
+* ransacReprojThreshold: RANSAC 재투영 에러 허용치. 기본값은 3.
+* maxIters: RANSAC 최대 반복 횟수. 기본값은 2000.
+* retval: 호모그래피 행렬. numpy.ndarray. shape=(3, 3). dtype=numpy.float32.
+* mask: 출력 마스크 행렬. RANSAC, RHO 방법 사용 시 Inlier로 사용된 점들을 1로 표시한 행렬. numpy.ndarray. shape=(N, 1), dtype=uint8
+
+### cv.getPerspectiveTransform
+```python
+cv.getPerspectiveTransform(input, output)
+```
+이미지에서 4개의 점을 정해서 그 점들을 가지고 변환행렬를 구하는 함수.
+* input : 원본 영상의 4개의 점
+* output : input에서 구한 점들이 어디로 변환될 지 각각의 위치를 나타내는 점
+
+### cv.warpPerspective
+```python
+cv.warpPerspective(input, output, matrix, size)
+```
+cv.getPerspectiveTransform에서 구한 변환 행렬을 이용해서 이미지를 기하학적으로 변환시키는 함수.
+* input : 변환 될 이미지
+* output : 변환 된 이미지를 저장
+* matrix : cv.getPerspectiveTransform에서 구한 결과를 두는 곳
+* size : 변환될 이미지의 가로, 세로 크기를 입력한다. (튜플로 입력한다.)
+
+
 ## 결과
 ![3번 결과](https://github.com/user-attachments/assets/4113ba4c-8610-4ba2-bc0b-faae13528e4b)
