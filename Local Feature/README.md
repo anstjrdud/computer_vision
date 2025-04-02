@@ -75,6 +75,7 @@ cv.drawKeypoints(img, keypoints, outImg, color, flags)
 ## 특징점 해설
 ![1번 해설](https://github.com/user-attachments/assets/99eeca03-1e84-488b-acc7-77445eb3152c)
 * T : 두 기술자의 거리가 T보다 작으면 매칭되었다고 간주한다.
+
 이 특징점들은 특징점의 위치, 특징점의 영향 범위에 대한 반경, 회전시 특징점을 식별할 수 있는 각도값으로써의 방향을 알 수 있게한다.
 
 # 2번
