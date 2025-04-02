@@ -7,7 +7,7 @@ gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 sift = cv.SIFT_create(nfeatures = 0, nOctaveLayers = 3, contrastThreshold = 0.06, edgeThreshold = 18, sigma = 1.6)
 kp, des = sift.detectAndCompute(gray, None)
 
-result = cv.drawKeypoints(gray, kp, None, flags=cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)\
+result = cv.drawKeypoints(gray, kp, None, flags=cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 
 result = cv.cvtColor(result, cv.COLOR_BGR2RGB)
 
