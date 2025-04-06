@@ -50,9 +50,8 @@ SIFT 객체를 생성하는 함수.
 ```
 SIFT 객체를 통해 이미지의 특징점을 검출하는 함수.
 * image: 입력 이미지
-* keypoints: 디스크립터 계산을 위해 사용할 특징점
-* descriptors(optional): 계산된 디스크립터
 * mask(optional): 특징점 검출에 사용할 마스크
+* descriptors(optional): 계산된 디스크립터
 * useProvidedKeypoints(optional): True인 경우 특징점 검출을 수행하지 않음
 
 ### cv.drawKeypoints
