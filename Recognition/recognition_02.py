@@ -51,7 +51,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-history = model.fit(train_x, train_y, epochs=20,
+history = model.fit(train_x, train_y, epochs=10,
                     validation_data=(test_x, test_y))
 
 # 훈련 결과
