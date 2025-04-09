@@ -23,7 +23,7 @@ print(train_y.shape)
 print(test_x.shape)
 print(test_y.shape)
 
-# 손글씨 숫자 이미지 크기 확인인
+# 손글씨 숫자 이미지 크기 확인
 
 image = train_x[0]
 print(image.shape)
