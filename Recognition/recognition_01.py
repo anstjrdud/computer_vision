@@ -12,7 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras import datasets
 
-#MNIST 데이터셋 다운 및 로드드
+#MNIST 데이터셋 다운 및 로드
 
 mnist = datasets.mnist
 (train_x, train_y), (test_x, test_y) = mnist.load_data()
