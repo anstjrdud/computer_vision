@@ -68,12 +68,10 @@ print('Test loss : ',test_loss)
 print('Test accuracy : ',test_acc)
 
 # 데이터 예측
-preds_data = test_x[20:30]
-preds_label = test_y[20:30]
-preds = model.predict(preds_data)
+preds = model.predict(test_x)
 
 # 예측 결과
-print(preds_label, end = ' ')
-print()
-for i in range(0, 10):
-  print(np.argmax(preds[i]), end = ' ')
+print('예측 값 : ',preds[0].argmax())
+plt.imshow(test_x[0])
+plt.show()
+print('정답 : ', preds[0].argmax())
