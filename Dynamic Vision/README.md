@@ -107,6 +107,7 @@ cv.destroyAllWindows()
 * coco.names : 각 클래시의 이름이 저장되어있는 파일
 * sort.py : SORT 알고리즘에 대한 소스 코드
 * yolov4.cfg : YOLOv4 모델 파일
+* yolov4.weights : YOLOv4 가중치 파일 (여기엔 파일 용량 문제로 올리지 못했습니다. https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights 여기서 받으면 됩니다.)
 
 ## 원리
 1. YOLOv4 모델을 불러와 레이어를 설정한다.
