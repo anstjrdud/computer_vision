@@ -36,7 +36,7 @@ plt.show()
 ## 함수
 ### cv2.Sobel
 ```python 
-cv2.Sobel (src, ddepth, dx, dy, dst=None, ksize=None, scale=None, delta=None, borderType=None)
+cv2.Sobel (src, depth, dx, dy, dst=None, ksize=None, scale=None, delta=None, borderType=None)
 ```
 
 X축과 Y축 방향의 에지를 검출할 함수.
